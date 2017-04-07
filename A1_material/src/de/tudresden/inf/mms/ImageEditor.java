@@ -1,6 +1,5 @@
 package de.tudresden.inf.mms;
 
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.geom.AffineTransform;
@@ -126,10 +125,17 @@ public class ImageEditor {
 	 */
 	public Image subsampling() {
 
-		/*
-		 * ToDo
-		 */
+		int[] rgb;
 		
+		for (int y = 0; y < image.getHeight(); y+=2){
+			for (int x = 0; x < image.getWidth(); x+=2){
+				rgb = ImageHelper.toRGBArray(image.getRGB(x, y));
+				tmpImg.setRGB(x, y, ImageHelper.toIntRGB(rgb));
+				tmpImg.setRGB(x +1, y, ImageHelper.toIntRGB(rgb));
+				tmpImg.setRGB(x, y + 1, ImageHelper.toIntRGB(rgb));
+				tmpImg.setRGB(x + 1, y + 1, ImageHelper.toIntRGB(rgb));
+			}
+		}
 		return tmpImg;
 	}
 
@@ -152,10 +158,14 @@ public class ImageEditor {
 	 */
 	public Image colorQuant() {
 
-		/*
-		 * ToDo
-		 */
-
+		int[] rgb;
+		
+		for (int x = 0; x < image.getWidth(); x++){
+			for (int y = 0; y < image.getHeight(); y++){
+				rgb = ImageHelper.toRGBArray(image.getRGB(x, y));
+				tmpImg.setRGB(x, y, ImageHelper.toIntRGB(ImageHelper.getColorFromPalette((rgb))));
+			}
+		}
 		return tmpImg;
 	}
 
@@ -165,9 +175,19 @@ public class ImageEditor {
 	 */
 	public Image orderedDithering() {
 
-		/*
-		 * ToDo
-		 */
+		int[] rgb;
+		
+		for (int x = 0; x < image.getWidth(); x++){
+			for (int y = 0; y < image.getHeight(); y++){
+				int[] bayerRGB;
+				rgb = ImageHelper.toRGBArray(image.getRGB(x, y));
+				bayerRGB = ImageHelper.toRGBArray((ImageHelper.BAYER8x8[x % 8][y % 8]));
+				for (int i = 0; i < rgb.length; i++){
+					rgb[i] += bayerRGB[i];
+				}
+				tmpImg.setRGB(x, y, ImageHelper.toIntRGB(ImageHelper.getColorFromPalette(rgb)));
+			}
+		}
 
 		return tmpImg;
 	}
@@ -180,9 +200,57 @@ public class ImageEditor {
 
 		/*
 		 * ToDo
+		 * 
+		 * for each y
+		   for each x
+		      oldpixel        := pixel[x][y]
+		      newpixel        := find_closest_palette_color (oldpixel)
+		      pixel[x][y]     := newpixel
+		      quant_error     := oldpixel - newpixel
+		      pixel[x+1][y  ] := pixel[x+1][y  ] + quant_error * 7 / 16
+		      pixel[x-1][y+1] := pixel[x-1][y+1] + quant_error * 3 / 16
+		      pixel[x  ][y+1] := pixel[x  ][y+1] + quant_error * 5 / 16
+		      pixel[x+1][y+1] := pixel[x+1][y+1] + quant_error * 1 / 16
+		 * 
 		 */
+		
+		int rgb[];
 
+		for (int y = 0; y < image.getHeight(); y++){
+			for (int x = 0; x < image.getWidth(); x++){
+				
+				rgb = ImageHelper.toRGBArray(image.getRGB(x, y));
+				int[] new_pixel = ImageHelper.getColorFromPalette(rgb);
+				
+				tmpImg.setRGB(x, y, ImageHelper.toIntRGB(new_pixel));
+				int[] quant_error = new int[3];
+				for (int i = 0; i < new_pixel.length; i++){
+					quant_error[i] = rgb[i] - new_pixel[i];
+				}
+				
+				tmpImg.setRGB(x + 1, y, ImageHelper.toIntRGB(addElements(ImageHelper.toRGBArray(image.getRGB(x + 1, y)), multiply_factor_to_array(quant_error, (7/16)))));
+				tmpImg.setRGB(x - 1, y + 1, ImageHelper.toIntRGB(addElements(ImageHelper.toRGBArray(image.getRGB(x - 1, y + 1)), multiply_factor_to_array(quant_error, (3/16)))));
+				tmpImg.setRGB(x, y + 1, ImageHelper.toIntRGB(addElements(ImageHelper.toRGBArray(image.getRGB(x, y + 1)), multiply_factor_to_array(quant_error, (5/16)))));
+				tmpImg.setRGB(x + 1, y +1 , ImageHelper.toIntRGB(addElements(ImageHelper.toRGBArray(image.getRGB(x + 1, y + 1)), multiply_factor_to_array(quant_error, (1/16)))));
+			}
+		}
+		
 		return tmpImg;
+	}
+	
+	public static int[] addElements(int[] x, int[] y){
+		int z[] = new int[x.length];
+		for (int i = 0; i < x.length; i++){
+			z[i] = x[i] + y[i];
+		}
+		return z;
+	}
+	
+	public static int[] multiply_factor_to_array(int[] x, int factor){
+		for (int i = 0; i < x.length; i++){
+			x[i] *= factor;
+		}
+		return x;
 	}
 
 }
