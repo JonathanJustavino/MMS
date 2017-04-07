@@ -1,10 +1,13 @@
 package de.tudresden.inf.mms;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 /**
- * @author <Vorname> <Name>, <Matrikelnummer>
+ * @author <Jonathan> <Justavino Lüderitz>, <4102359>
  * 
  */
 public class ImageEditor {
@@ -57,10 +60,17 @@ public class ImageEditor {
 	 */
 	public Image invert() {
 
-		/*
-		 * ToDo
-		 */
-
+		int[] rgb;
+		
+		for (int x = 0; x < image.getWidth(); x++){
+			for (int y = 0; y < image.getHeight(); y++){
+				rgb = ImageHelper.toRGBArray(image.getRGB(x, y));
+				rgb[0] = 255 - rgb[0];
+				rgb[1] = 255 - rgb[1];
+				rgb[2] = 255 - rgb[2];
+				tmpImg.setRGB(x, y, ImageHelper.toIntRGB(rgb));
+			}
+		}
 		return tmpImg;
 	}
 
@@ -70,10 +80,15 @@ public class ImageEditor {
 	 */
 	public Image rotate() {
 
-		/*
-		 * ToDo
-		 */
+		AffineTransform transfrom = new AffineTransform();
+		transfrom.translate(image.getWidth()/2, image.getHeight()/2);
+		transfrom.rotate(Math.toRadians(180));
+		transfrom.translate(-image.getWidth()/2, -image.getHeight()/2);
 
+		Graphics2D graph2D = tmpImg.createGraphics();
+		
+		graph2D.drawImage(image, transfrom, null);
+		
 		return tmpImg;
 	}
 
@@ -83,9 +98,24 @@ public class ImageEditor {
 	 */
 	public Image linHist() {
 
-		/*
-		 * ToDo
-		 */
+		int[]rgb;
+		
+		for (int x = 0; x < image.getWidth(); x++){
+			for (int y = 0; y < image.getHeight(); y++){
+				
+				rgb = ImageHelper.toRGBArray(image.getRGB(x, y));
+				
+				double ys = Math.floor(0.299 * rgb[0]) + (0.587 * rgb[1]) +(0.114 * rgb[2]);
+				double cb = Math.floor(128 - (0.168736 * rgb[0]) -(0.331264 * rgb[1]) + (0.5 * rgb[2]));
+				double cr = Math.floor(128 + (0.5 * rgb[0]) - (0.418688 * rgb[1]) - (0.081312 * rgb[2]));
+				
+				rgb[0] = (int)(ys + 1.402 * (cr - 128));
+				rgb[1] = (int)(ys - 0.34414 * (cb - 128) - 0.71414 * (cr -128));
+				rgb[2] = (int)(ys + 1.772 * (cb - 128));
+				
+				tmpImg.setRGB(x, y, ImageHelper.toIntRGB(rgb));
+			}
+		}
 
 		return tmpImg;
 	}
