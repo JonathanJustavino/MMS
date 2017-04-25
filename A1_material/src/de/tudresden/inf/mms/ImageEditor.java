@@ -7,18 +7,18 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 /**
- * @author <Jonathan> <Justavino L�deritz>, <4102359>
+ * @author <Jonathan> <Justavino Lüderitz>, <4102359>
  * 
  */
 public class ImageEditor {
 
 	/**
-	 * Originalbild (Ausgangspunkt f�r Berechnungen)
+	 * Originalbild (Ausgangspunkt für Berechnungen)
 	 */
 	private BufferedImage image;
 
 	/**
-	 * Tempor�re Kopie bzw. Ergebnisbild
+	 * Temporäre Kopie bzw. Ergebnisbild
 	 */
 	private BufferedImage tmpImg;
 
@@ -55,6 +55,7 @@ public class ImageEditor {
 	}
 
 	/**
+	 *
 	 * @see Aufgabe 1.1.1
 	 * @return {@link java.awt.image.BufferedImage}
 	 */
@@ -62,9 +63,18 @@ public class ImageEditor {
 
 		int[] rgb;
 		
+		/**
+		 * Iteriert über die Pixel des Originalbildes 
+		 */
 		for (int x = 0; x < image.getWidth(); x++){
 			for (int y = 0; y < image.getHeight(); y++){
 				rgb = ImageHelper.toRGBArray(image.getRGB(x, y));
+				
+				/**
+				 * Invertieren der jeweiligen Rot-, Grün- und Blau-Werte des jeweiligen Pixels des Originalbildes
+				 * und setzen der invertierten Farbinformation im Ergebnisbild
+				 */
+				
 				rgb[0] = 255 - rgb[0];
 				rgb[1] = 255 - rgb[1];
 				rgb[2] = 255 - rgb[2];
@@ -75,17 +85,27 @@ public class ImageEditor {
 	}
 
 	/**
+	 * 
 	 * @see Aufgabe 1.1.2
 	 * @return {@link java.awt.image.BufferedImage}
 	 */
 	public Image rotate() {
-
+		
+		/**
+		 * Erstellen einer affinen Transformation und setzen der
+		 * Translation und Rotation
+		 */
+		
 		AffineTransform transfrom = new AffineTransform();
 		transfrom.translate(image.getWidth()/2, image.getHeight()/2);
 		transfrom.rotate(Math.toRadians(180));
 		transfrom.translate(-image.getWidth()/2, -image.getHeight()/2);
 
 		Graphics2D graph2D = tmpImg.createGraphics();
+		
+		/**
+		 * Transformieren und anschließendes Rendern in das Ergebnisbild
+		 */
 		
 		graph2D.drawImage(image, transfrom, null);
 		
@@ -98,6 +118,10 @@ public class ImageEditor {
 	 */
 	public Image linHist() {
 		
+		/**
+		 * Speichern der Helligkeitsinformationen des Originalbildes
+		 */
+		
 		int[] h = new int[256];
 		int[]rgb; 
 		
@@ -105,12 +129,20 @@ public class ImageEditor {
 			for (int y = 0; y < image.getHeight(); y++){
 				
 				rgb = ImageHelper.toRGBArray(image.getRGB(x, y));
+				
+				/**
+				 * Speichern der Anzahl der jeweiligen Helligkeitswerte
+				 */
 			
 				double ys = Math.floor(0.299 * rgb[0]) + (0.587 * rgb[1]) +(0.114 * rgb[2]);
 							
 				h[(int) ys]++;	
 			}
 		}
+		
+		/**
+		 * Berechnen der Helligkeitsfunktionswerte
+		 */
 		
 		double factor = ((double) 255) / (image.getWidth() * image.getHeight());
 		int[] f = new int[256];
@@ -120,6 +152,10 @@ public class ImageEditor {
 			f[a] = (int)(factor * h_sum);
 			
 		}
+		
+		/**
+		 * Ausführen des Histogrammausgleichs auf dem Helligkeitskanal
+		 */
 		
 		for (int x = 0; x < image.getWidth(); x++){
 			for (int y = 0; y < image.getHeight(); y++){
@@ -151,6 +187,9 @@ public class ImageEditor {
 
 		int[] rgb;
 		
+		/**
+		 * Setzen des Farbwertes und Helligkeitswertes eines Pixels für die jeweils umliegenden Pixel
+		 */
 		for (int y = 0; y < image.getHeight(); y+=2){
 			for (int x = 0; x < image.getWidth(); x+=2){
 				rgb = ImageHelper.toRGBArray(image.getRGB(x, y));
@@ -177,6 +216,11 @@ public class ImageEditor {
 		int[] pixel10 = new int[3];
 		int[] pixel11 = new int[3];
 		int[] rgb_buffer = new int[3];
+		
+		/**
+		 * Setzen des Farbwertes eines Pixels für die jeweils umliegenden Pixel
+		 * wobei der Helligkeitswert nicht verändert wird
+		 */
 		
 		for (int y = 0; y < height; y+=2){
 			for (int x = 0; x < width; x+=2){
@@ -208,6 +252,11 @@ public class ImageEditor {
 
 		int[] rgb;
 		
+		/**
+		 * Setzen der Farbinformation des jeweiligen Pixels 
+		 * anhand der ähnlichsten Farbe in der Farbpalette
+		 */
+		
 		for (int x = 0; x < image.getWidth(); x++){
 			for (int y = 0; y < image.getHeight(); y++){
 				rgb = ImageHelper.toRGBArray(image.getRGB(x, y));
@@ -224,6 +273,11 @@ public class ImageEditor {
 	public Image orderedDithering() {
 
 		int[] rgb;
+		
+		/**
+		 * Setzen der Farbinformation des jeweiligen Pixels 
+		 * durch drauf addieren des ähnlichsten Farbwertes der Bayer 8 x 8 Farbpalette
+		 */
 		
 		for (int x = 0; x < image.getWidth(); x++){
 			for (int y = 0; y < image.getHeight(); y++){
@@ -259,13 +313,26 @@ public class ImageEditor {
 			for (int x = 0; x < max_x; x++){
 				
 				rgb = ImageHelper.toRGBArray(tmpImg.getRGB(x, y));
+				
+				/**
+				 * Setzen des neuen Farbwertes für den jeweiligen Pixel 
+				 */
+				
 				int[] new_pixel = ImageHelper.getColorFromPalette(rgb);			
+				
+				/**
+				 * Berechnen des Quantisierungsfehlers
+				 */
 				
 				int quant_error_r = rgb[0] - new_pixel[0];
 				int quant_error_g = rgb[1] - new_pixel[1];
 				int quant_error_b = rgb[2] - new_pixel[2];
 				
 				tmpImg.setRGB(x, y, ImageHelper.toIntRGB(new_pixel));
+				
+				/**
+				 * Addieren des Quantisierungsfehlers für die Pixel (x + 1, y), (x - 1, y + 1), (x, y + 1), (x + 1, y + 1)
+				 */
 				
 				if(x < max_x){
 					add_quant_error(x + 1, y, quant_error_r, quant_error_g, quant_error_b, 7);
@@ -286,6 +353,9 @@ public class ImageEditor {
 		return tmpImg;
 	}
 	
+	/**
+	 * Hilfsfunktion zum addieren des Quantisierungsfehlers auf einen Pixel
+	 */
 	public void add_quant_error(int x, int y, int quant_error_r, int quant_error_g, int quant_error_b, int quant_weight){
 		int[] pixel = ImageHelper.toRGBArray(tmpImg.getRGB(x, y));
 		pixel[0] += quant_error_r * quant_weight >> 4;
@@ -295,6 +365,9 @@ public class ImageEditor {
 		tmpImg.setRGB(x, y, ImageHelper.toIntRGB(pixel));
 	}
 	
+	/**
+	 * Hilfsfunktion zum konvertieren des RGB Formates in das YCbCr Format
+	 */
 	public void to_YCbCr(int rgb_int, int[] yCbCr){
 		
 		int[] rgb = ImageHelper.toRGBArray(rgb_int);
@@ -304,6 +377,9 @@ public class ImageEditor {
 		yCbCr[2] = (int)(Math.floor(128 + (0.5 * rgb[0]) - (0.418688 * rgb[1]) - (0.081312 * rgb[2])));
 	}
 	
+	/**
+	 * Hilfsfunktion zum konvertieren des YCbCr Formates in das RGB Format
+	 */
 	public int to_rgb(int y, int cb, int cr, int[] rgb){
 		
 		rgb[0] = (int)(y + 1.402 * (cr - 128));
@@ -312,5 +388,6 @@ public class ImageEditor {
 		
 		return ImageHelper.toIntRGB(rgb);
 	}
+	
 
 }
