@@ -314,6 +314,7 @@ public class ImageEditor {
 		/**
 		 * Setzen der Farbinformation des jeweiligen Pixels 
 		 * durch drauf addieren des ähnlichsten Farbwertes der Bayer 8 x 8 Farbpalette
+		 * und anschließendes setzen des Pixels mit der ähnlichsten Farbe der 16-Farben-Palette
 		 */
 		
 		for (int x = 0; x < image.getWidth(); x++){
@@ -354,7 +355,7 @@ public class ImageEditor {
 				rgb = ImageHelper.toRGBArray(tmpImg.getRGB(x, y));
 				
 				/**
-				 * Setzen des neuen Farbwertes für den jeweiligen Pixel 
+				 * Bestimmmen des neuen Farbwertes für den jeweiligen Pixel 
 				 */
 				
 				int[] new_pixel = ImageHelper.getColorFromPalette(rgb);			
@@ -371,6 +372,7 @@ public class ImageEditor {
 				
 				/**
 				 * Addieren des Quantisierungsfehlers für die Pixel (x + 1, y), (x - 1, y + 1), (x, y + 1), (x + 1, y + 1)
+				 * und anschließendes Setzen der Pixel
 				 */
 				
 				if(x < max_x){
