@@ -55,7 +55,8 @@ public class ImageEditor {
 	}
 
 	/**
-	 *
+	 * Invertiert das vorgegebene RGB-Bild ({@link ImageEditor#image})
+	 * 
 	 * @see Aufgabe 1.1.1
 	 * @return {@link java.awt.image.BufferedImage}
 	 */
@@ -85,6 +86,7 @@ public class ImageEditor {
 	}
 
 	/**
+	 * Rotiert das vorgegebene RGB-Bild ({@link ImageEditor#image}) um 180 Grad.
 	 * 
 	 * @see Aufgabe 1.1.2
 	 * @return {@link java.awt.image.BufferedImage}
@@ -113,6 +115,8 @@ public class ImageEditor {
 	}
 
 	/**
+	 * Erstellt einen Histogrammausgleich des vorgegebenen RGB-Bilds. ({@link ImageEditor#image})
+	 * 
 	 * @see Aufgabe 1.1.3
 	 * @return {@link java.awt.image.BufferedImage}
 	 */
@@ -141,7 +145,7 @@ public class ImageEditor {
 		}
 		
 		/**
-		 * Berechnen der Helligkeitsfunktionswerte
+		 * Berechnen der Helligkeitsfunktionswerte (k/w*h * sum(h(a)))
 		 */
 		
 		double factor = ((double) 255) / (image.getWidth() * image.getHeight());
@@ -162,11 +166,18 @@ public class ImageEditor {
 				
 				rgb = ImageHelper.toRGBArray(image.getRGB(x, y));
 				
+				/**
+				 * Konvertierung in das YCbCr Format.
+				 */
+				
 				double ys_old = Math.floor(0.299 * rgb[0]) + (0.587 * rgb[1]) +(0.114 * rgb[2]);
 				double ys_new = f[(int)ys_old];
 				double cb = Math.floor(128 - (0.168736 * rgb[0]) -(0.331264 * rgb[1]) + (0.5 * rgb[2]));
 				double cr = Math.floor(128 + (0.5 * rgb[0]) - (0.418688 * rgb[1]) - (0.081312 * rgb[2]));
 				
+				/**
+				 * Rückkonvertierung in das RGB Format.
+				 */
 				
 				rgb[0] = (int)(ys_new + 1.402 * (cr - 128));
 				rgb[1] = (int)(ys_new - 0.34414 * (cb - 128) - 0.71414 * (cr -128));
@@ -180,6 +191,11 @@ public class ImageEditor {
 	}
 	
 	/**
+	 * Führt eine Unterabstastung des vorgegebene RGB-Bilds ({@link ImageEditor#image}) durch.
+	 * 
+	 * Beobachtung:
+	 * Das Bild wird Pixelig, da der selbe Pixel auf drei weitere gelegt wird.
+	 * 
 	 * @see Aufgabe 1.2.1
 	 * @return {@link java.awt.image.BufferedImage}
 	 */
@@ -188,7 +204,7 @@ public class ImageEditor {
 		int[] rgb;
 		
 		/**
-		 * Setzen des Farbwertes und Helligkeitswertes eines Pixels für die jeweils umliegenden Pixel
+		 * Setzen des Farbwertes und Helligkeitswertes eines Pixels für die jeweils nächsten drei Pixel
 		 */
 		for (int y = 0; y < image.getHeight(); y+=2){
 			for (int x = 0; x < image.getWidth(); x+=2){
@@ -203,6 +219,13 @@ public class ImageEditor {
 	}
 
 	/**
+	 * Führt eine Farbunterabstastung des vorgegebene RGB-Bilds ({@link ImageEditor#image}) durch.
+	 * 
+	 * Beobachtung:
+	 * Kein ersichtlicher Unterschied zum Originalbild, da das menschliche Auge
+	 * Helligkeitsunterschiede stärker wahrnimmt als Farbunterschiede.
+	 * Somit wird der Speicherplatz geringer während das Bild unverändert wirkt.
+	 * 
 	 * @see Aufgabe 1.2.2
 	 * @return {@link java.awt.image.BufferedImage}
 	 */
@@ -230,9 +253,17 @@ public class ImageEditor {
 				to_YCbCr(image.getRGB(x, y + 1), pixel10);
 				to_YCbCr(image.getRGB(x + 1, y + 1), pixel11);
 				
+				/**
+				 * Mitteln des Farbwertes
+				 */
+				
 				int cb = (pixel00[1] + pixel01[1] + pixel10[1] + pixel11[1]) >> 2;
 				int cr = (pixel00[2] + pixel01[2] + pixel10[2] + pixel11[2]) >> 2;
 				
+				/**
+				 * Konvertierung in RGB und setzen der Pixel
+				 */
+			
 				tmpImg.setRGB(x, y, to_rgb(pixel00[0], cb, cr, rgb_buffer));
 				tmpImg.setRGB(x + 1, y, to_rgb(pixel01[0], cb, cr, rgb_buffer));
 				tmpImg.setRGB(x, y + 1, to_rgb(pixel10[0], cb, cr, rgb_buffer));
@@ -245,6 +276,9 @@ public class ImageEditor {
 	}
 
 	/**
+	 * Führt eine Farbquantisierung des vorgegebene RGB-Bilds ({@link ImageEditor#image}) durch
+	 * mithilfe einer vorgegebenen Farbpalette.
+	 * 
 	 * @see Aufgabe 1.3.1
 	 * @return {@link java.awt.image.BufferedImage}
 	 */
@@ -267,6 +301,9 @@ public class ImageEditor {
 	}
 
 	/**
+	 * Führt eine Farbquantisierung des vorgegebene RGB-Bilds ({@link ImageEditor#image}) durch
+	 * mithilfe der vorgegebenen Bayer-Farbpalette.
+	 * 
 	 * @see Aufgabe 1.3.2
 	 * @return {@link java.awt.image.BufferedImage}
 	 */
@@ -295,6 +332,8 @@ public class ImageEditor {
 	}
 
 	/**
+	 * Führt anhand des Floyd-Steinberg-Algorithmus eine Farbquantisierung des vorgegebene RGB-Bilds ({@link ImageEditor#image}) durch.
+	 * 
 	 * @see Aufgabe 1.3.3
 	 * @return {@link java.awt.image.BufferedImage}
 	 */
@@ -380,6 +419,8 @@ public class ImageEditor {
 	/**
 	 * Hilfsfunktion zum konvertieren des YCbCr Formates in das RGB Format
 	 */
+	
+
 	public int to_rgb(int y, int cb, int cr, int[] rgb){
 		
 		rgb[0] = (int)(y + 1.402 * (cr - 128));
@@ -388,6 +429,27 @@ public class ImageEditor {
 		
 		return ImageHelper.toIntRGB(rgb);
 	}
+	
+	/**
+	 * Vergleich der drei Verfahren der Farbreduktion.
+	 * 
+	 * @see Aufgabe 1.3.4
+	 * 
+	 * Farbquantisierung:
+	 * Bricht das Bild runter auf den vorgegebenen Farbraum der Palette.
+	 * Weshalb das Bild verwaschen wirkt.
+	 * 
+	 * Ordered-Dithering:
+	 * Durch das Dithering werden harte Übergänge der Farben durch eine bestimmte Pixel-Anordnung ausgeglichen.
+	 * Das menschliche Auge nimmt dies als Mischung der einzelnen Farben wahr.
+	 * Das Bild wirkt detailierte als bei der Farbquantisierung.
+	 * 
+	 * Floyd-Steinberg-Dithering:
+	 * Bei der Quantisierung auftretende Fehler eines jeden Pixels wird nach einem festen Schema auf die umliegenden Pixel verteilt.
+	 * Dadurch erreicht der Algorithmus eine bessere Detailgenauigkeit als beim Ordered-Dithering.
+	 * Dies hat zur Folge, dass das Bild am detailreichsten von den drei Verfahren zur Farbreduktion wirkt.
+	 *
+	 */
 	
 
 }
