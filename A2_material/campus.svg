@@ -59,22 +59,25 @@ Author: <Jonathan> <Justavino	Lüderitz>, <4102359>
 			<line fill="none" stroke="#e5005a" stroke-width="15" stroke-dasharray="2,2" x1="586" y1="39" x2="580" y2="57"/>
 			<!-- Straßenbahn Linie 3 Haltestelle: Nöthnitzerstraße -->
 			<g>
-				<rect x="-55" y="492" rx="5" ry="5" width="29" height="29" stroke="#000" fill="#e5005a"/>
-				<text x="-44" y="512" stroke="#FFF" fill="#FFF">3</text>
+				<polygon points="-27,493 -54,493 -54,520" rx="15" ry="15" width="29" height="29" fill="#e5005a"/>
+				<polygon points="-27,493 -54,520 -27,520" rx="5" ry="5" width="29" height="29" fill="#c99d66"/>
+				<rect x="-55" y="492" rx="5" ry="5" width="29" height="29" stroke-width="2" stroke="#000" fill="none"/>
+				<text x="-52" y="506" stroke="#FFF" fill="#FFF">3</text>
+				<text x="-43" y="519" stroke="#FFF" fill="#FFF">85</text>
 			</g>
 			<!-- Straßenbahn Linie 3 Haltestelle: Münchener Platz -->
 			<g>
-				<rect x="210" y="357" rx="5" ry="5" width="29" height="29" stroke="#000" fill="#e5005a"/>
+				<rect x="210" y="357" rx="5" ry="5" width="29" height="29" stroke-width="2" stroke="#000" fill="#e5005a"/>
 				<text x="221" y="377" stroke="#FFF" fill="#FFF">3</text>
 			</g>
 			<!-- Straßenbahn Linie 3 Haltestelle: Nürnberger Platz -->
 			<g>
-				<rect x="396" y="260" rx="5" ry="5" width="29" height="29" stroke="#000" fill="#e5005a"/>
+				<rect x="396" y="260" rx="5" ry="5" width="29" height="29" stroke-width="2" stroke="#000" fill="#e5005a"/>
 				<text x="407" y="280" stroke="#FFF" fill="#FFF">3</text>
 			</g>
 			<!-- Straßenbahn Linie 3 Haltestelle: Reichenbachstraße -->
 			<g>
-				<rect x="539" y="120" rx="5" ry="5" width="29" height="29" stroke="#000" fill="#e5005a"/>
+				<rect x="539" y="120" rx="5" ry="5" width="29" height="29" stroke-width="2" stroke="#000" fill="#e5005a"/>
 				<text x="550" y="140" stroke="#FFF" fill="#FFF">3</text>
 			</g>
 		</g>
@@ -84,6 +87,16 @@ Author: <Jonathan> <Justavino	Lüderitz>, <4102359>
 			<polyline fill="none" stroke="#B2B2B2" stroke-width="15" points=" 71,538 311,597 428,632 510,654 547,654"/>
 			<!-- Bus Linie 85 Teil 2 -->
 			<polyline fill="none" stroke="#c99d66" stroke-width="15" points=" 71,538 311,597 428,632 510,654 538,654"/>
+			<!-- Bus Linie 85 Haltestelle: Helmholtzstraße -->
+			<g>
+				<rect x="290" y="581" rx="5" ry="5" width="29" height="29" stroke="#000" fill="#c99d66" stroke-width="2"/>
+				<text x="297" y="601" stroke="#FFF" fill="#FFF">85</text>
+			</g>
+			<!-- Bus Linie 85 Haltestelle: Regensburger Straße -->
+			<g>
+				<rect x="96" y="533" rx="5" ry="5" width="29" height="29" stroke="#000" fill="#c99d66" stroke-width="2"/>
+				<text x="103" y="553" stroke="#FFF" fill="#FFF">85</text>
+			</g>
 		</g>
 
 		<!-- Hauptbahnhof -->
