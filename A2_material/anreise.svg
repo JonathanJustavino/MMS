@@ -11,12 +11,16 @@ Getestet mit: <Google Chrome> <58.0.3029.96>
 
 <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="600px" height="600px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
-
 	<!-- Gruppierung aller Elemente  Aufgabe 2.1.1-->
 	<g transform="translate(-120,20)">
+		<!-- Hintergrund -->
+		<rect x="20" y="-30" width="2000" height="1000" fill="#6C952D"/>
+
+		<!-- Campusmarkierung Aufgabe 2.1.2 -->
+		<circle cx="330" cy="495" r="80" stroke="black" stroke-width="1.5" fill="#7791C4"/>
 
 		<!-- Elbe -->
-		<path fill="none" stroke="#000000" stroke-width="0.25" d="M623.045,272.651
+		<path fill="#294875" stroke="#000" stroke-width="0.25" d="M623.045,272.651
 			c29.067,33.075,42.445,49.013,48.534,57.678l0.003,21.237c-12.847-16.868-38.868-49.726-39.144-49.827
 			c-0.372-0.138-19.446-21.035-22.894-23.838s-48.627-45.618-85-41.25c-34.947,4.197-46.553,23.303-51,27.75
 			s-30.244,30.724-53.5,36.75c-16.197,4.196-54.156,7.979-78.25-41c-12.447-25.303-5.466-30.746-22.75-44.25
@@ -31,27 +35,27 @@ Getestet mit: <Google Chrome> <58.0.3029.96>
 
 		<!-- Carolabruecke -->
 		<g>
-			<polygon fill="#FFFFFF" points="411,288 423,285 424,301 413,304 411,288"/>
+			<polygon fill="#666" points="411,288 423,285 424,301 413,304 411,288"/>
 			<path fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" d="M410,287
 				l1.978,2.466l0.875,15l-1.375,1.626 M424,284l-1.5,3.125l1,14.25l0.875,1.5"/>
 		</g>
 
 		<!-- Marienbruecke -->
 		<g>
-			<polygon fill="#FFFFFF" points="348,231 353,247 341,259 335,245 348,231 "/>
+			<polygon fill="#666" points="348,231 353,247 341,259 335,245 348,231 "/>
 			<path fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" d="M348,229
 				l-1.397,2.966l-12.603,11.284l-2.25-0.5 M357,247l-3.022,0.341l-13.875,13.75v2.5"/>
 		</g>
 
 		<!-- Autobahnbruecke -->
 		<g>
-			<polygon fill="#FFFFFF" points="226,200 236,207 221,218 212,211 226,200 "/>
+			<polygon fill="#666" points="226,200 236,207 221,218 212,211 226,200 "/>
 			<path fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" d="M210,210
 				l2.478,0.091l13-10.25l1.147-2.591 M240,207l-3,0.375l-16.397,12.716l0.022,2.659"/>
 		</g>
 
 		<!-- S-Bahn -->
-		<path fill="none" stroke-lincap="butt" stroke-dasharray="5,3" stroke="#000000" d="M528.414,507.575c54.272,24.693,99.934,45.523,99.934,45.523
+		<path fill="none" stroke-linecap="round" stroke-dasharray="5,3" stroke="#000000" d="M528.414,507.575c54.272,24.693,99.934,45.523,99.934,45.523
 			 M434.729,465.017c27.319,12.382,64.911,29.468,93.686,42.559 M256.545,394.151c0,0,10.947-5.447,26.25-2.25
 			c15.303,3.196,20.947,7.553,24,9.5c3.053,1.946,13.447,12.553,48.75,28c10.701,4.682,43.574,19.479,79.184,35.615 M292.083,105.054
 			c-4.926-2.361-9.958-4.617-15.036-6.696c-41.872-17.141-77.473-31.973-77.473-31.973 M377.606,208.853
@@ -65,7 +69,7 @@ Getestet mit: <Google Chrome> <58.0.3029.96>
 			c-3.774-14.088-18.932-15.462-23.508-18.532"/>
 
 		<!-- S-Bahn S2 -->
-		<path fill="none" stroke-lincap="butt" stroke-dasharray="5,3"  stroke="#000000" stroke-width="2" d="M306,401.001c3.053,1.945,10.167,10,44.736,26.216
+		<path fill="none" stroke-linecap="round" stroke-dasharray="5,3"  stroke="#000000" stroke-width="2" d="M306,401.001c3.053,1.945,10.167,10,44.736,26.216
 			 M377.606,208.853c0.843-0.684,1.519-1.207,2.001-1.543 M354.825,229.053c3.798-3.443,13.232-11.982,16.205-14.589 M289.452,306.724
 			c10.415-21.939,24.939-38.706,27.624-41.537c7.436-7.841,23.603-23.162,37.749-36.133 M279.084,349.962
 			c-1.489-11.679,1.869-23.882,6.989-36.023 M310.25,403.817c0.176,0.079-24.73-22.143-31.167-53.855 M430.86,140.163
@@ -73,19 +77,16 @@ Getestet mit: <Google Chrome> <58.0.3029.96>
 			c-0.061-0.168,25.639-25.41,36.892-46.976c1.649-3.162,7.513-13.882,9.195-16.975 M487.042,65.329
 			c-3.774-14.088-18.932-15.462-23.508-18.532"/>
 
-		<!-- Markierung des Teilplans Aufgabe 2.1.2 -->
-		<circle cx="330" cy="495" r="80" stroke="black" stroke-width="1.5" fill="#7791C4"/>
-
 		<!-- Hauptbahnhof -->
-		<rect x="331" y="417" transform="matrix(0.885 0.4657 -0.4657 0.885 236.0825 -110.1689)" fill="#FFFFFF"
+		<rect fill="#B2B2B2" x="331" y="417" transform="matrix(0.885 0.4657 -0.4657 0.885 236.0825 -110.1689)"
 			stroke="#000000" stroke-width="0.8" width="20" height="10"/>
 
 		<!-- Bahnhof Neustadt -->
-		<rect x="375" y="197" transform="matrix(0.6841 -0.7293 0.7293 0.6841 -25.8365 345.0185)" fill="#FFFFFF"
+		<rect fill="#B2B2B2" x="375" y="197" transform="matrix(0.6841 -0.7293 0.7293 0.6841 -25.8365 345.0185)"
 			stroke="#000000" stroke-width="0.8" width="20" height="10"/>
 
 		<!-- Bahnhof Mitte -->
-		<rect x="290" y="283" transform="matrix(0.5298 -0.8481 0.8481 0.5298 -103.8481 389.9749)" fill="#FFFFFF"
+		<rect fill="#B2B2B2" x="290" y="283" transform="matrix(0.5298 -0.8481 0.8481 0.5298 -103.8481 389.9749)"
 			stroke="#000000" stroke-width="0.8" width="20" height="10"/>
 
 
@@ -99,7 +100,7 @@ Getestet mit: <Google Chrome> <58.0.3029.96>
 
 		<!-- Autobahn -->
 		<g>
-			<path fill="#FFFFFF" stroke="#000000" d="M582.754,4.09c0,0-64.154-2.145-84.813,0
+			<path fill="#FFCD35" stroke="#000000" d="M582.754,4.09c0,0-64.154-2.145-84.813,0
 				c-20.659,2.146-34.684,0.802-53.05,10.479c-18.367,9.677-17.773,10.424-18.457,10.605s10.271-31.891,10.271-31.891l-6.877-2.292
 				c0,0-4.792,23.248-11.569,38.41c-0.897,2.006-3.994,4.019-5.846,7.556c-2.02,3.858-5.616,6.959-6.36,8.325
 				c-6.319,11.598-13.761,25.094-24.034,31.833c-5.269,3.455-23.55,14.228-34.057,18.666c-10.507,4.438-13.727,6.696-15.719,7.859
@@ -127,4 +128,27 @@ Getestet mit: <Google Chrome> <58.0.3029.96>
 			s2.07,1.499,2.07,1.499s0.396,0.154,0.33,0.495v1.165c0,0,0.056,0.256-0.374,0.113c-0.43-0.143-2.5-1.146-2.5-1.146
 			s-0.529-0.243-0.728,0l-0.11,0.309l-0.121,0.43c0,0-0.066,0.264-0.209,0.264L456.912,53.448L456.912,53.448z"/>
 	</g>
+
+	<!-- Beschriftung -->
+    <g>
+        <text x="400" y="254" font-family="Verdana" fill="white" font-size="10">
+            Elbe
+        </text>
+        <text x="212" y="70" font-family="Verdana" fill="white" font-size="10">
+            Autobahn A4
+        </text>
+        <text x="182" y="412" font-family="Verdana" fill="white" font-size="10">
+            Hauptbahnhof
+        </text>
+        <text x="380" y="68" font-family="Verdana" fill="white" font-size="10">
+            Dresdner Flughafen
+        </text>
+        <text x="120" y="290" font-family="Verdana" fill="white" font-size="10">
+            Bahnhof Mitte
+        </text>
+        <text x="270" y="200" font-family="Verdana" fill="white" font-size="10">
+            Bahnhof Neustadt
+        </text>
+    </g>
+
 </svg>

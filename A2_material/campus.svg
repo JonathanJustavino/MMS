@@ -11,7 +11,11 @@ Author: <Jonathan> <Justavino	Lüderitz>, <4102359>
 <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="840px" height="840px" viewBox="0 0 840 840" enable-background="new 0 0 840 840" xml:space="preserve">
 
+	 <!-- Backgroundcolor -->
+	 <rect x="0" y="-30" width="2000" height="1000" fill="#6C952D"/>
+
 	 <g transform="translate(60,20)">
+
 		<!-- Nebenstrassen -->
 		<path fill="none" stroke="#B2B2B2" stroke-width="7" d="M704.895,505.193l-119.25-12.74l-11.334,28.734l-227.516,3.514
 			 M392.228,611.351l36.908-21.967l46.136-12.834l227.422-38.666 M191.34,352.288l30.843,56.417l20.655,168.548 M78.449,387.749
@@ -25,6 +29,9 @@ Author: <Jonathan> <Justavino	Lüderitz>, <4102359>
 			l158.264,46.934l-12.037,73.371 M222.535,409.759l37.962-21.616l249.13-22.061 M412.438,293.669l12.038,78.479 M165.195,409.919
 			l13.757,22.159l15.901,130.328 M71.038,460.906l14.145,23.373l6.417,54.309 M724.758,348.903l-30.016-11.563
 			M131.774,428.9 l12.023,22.674 l8.031,64 l-6.012,33.326 M515.754,217.103 l-22.854,-167.555 M99.111,403.574 l218.475,-295.730"/>
+
+			<!-- Georg-Schumann-Straße -->
+			<path fill="none" stroke="#294875" stroke-width="7" stroke-dasharray="10,10" d="M210.580,387 l11.843,21.417 l20.655,168.548"/>
 
 		<!-- Bergstrasse -->
 		<polyline fill="none" stroke="#B2B2B2" stroke-width="15" points="518,220 575,607 548,650 541,687 540,687 531,715 531,716"/>
@@ -52,49 +59,49 @@ Author: <Jonathan> <Justavino	Lüderitz>, <4102359>
 			<line fill="none" stroke="#B2B2B2" stroke-width="15" stroke-dasharray="2,2" x1="586" y1="39" x2="580" y2="57"/>
 
 			<!-- Bus Linie 85 Teil 1-->
-			<polyline fill="none" stroke="#c99d66" stroke-width="15" points=" -35,509 71,538 311,597 428,632 510,654 547,654"/>
+			<polyline fill="none" stroke="#7791C4" stroke-width="15" points=" -35,509 71,538 311,597 428,632 510,654 547,654"/>
 
 			<!-- Straßenbahn Linie 3-->
-			<polyline fill="none" stroke="#e5005a" stroke-width="15" points="579,57 529,213 54,461 0,490 -10,495 -35,509"/>
-			<line fill="none" stroke="#e5005a" stroke-width="15" stroke-dasharray="2,2" x1="586" y1="39" x2="580" y2="57"/>
+			<polyline fill="none" stroke="#FFCD35" stroke-width="15" points="579,57 529,213 54,461 0,490 -10,495 -35,509"/>
+			<line fill="none" stroke="#FFCD35" stroke-width="15" stroke-dasharray="2,2" x1="586" y1="39" x2="580" y2="57"/>
 			<!-- Straßenbahn Linie 3 Haltestelle: Nöthnitzerstraße -->
 			<g>
-				<polygon points="-27,493 -54,493 -54,520" rx="15" ry="15" width="29" height="29" fill="#e5005a"/>
-				<polygon points="-27,493 -54,520 -27,520" rx="5" ry="5" width="29" height="29" fill="#c99d66"/>
+				<polygon points="-27,493 -54,493 -54,520" rx="15" ry="15" width="29" height="29" fill="#FFCD35"/>
+				<polygon points="-27,493 -54,520 -27,520" rx="5" ry="5" width="29" height="29" fill="#7791C4"/>
 				<rect x="-55" y="492" rx="5" ry="5" width="29" height="29" stroke-width="2" stroke="#000" fill="none"/>
 				<text x="-52" y="506" stroke="#FFF" fill="#FFF">3</text>
 				<text x="-43" y="519" stroke="#FFF" fill="#FFF">85</text>
 			</g>
 			<!-- Straßenbahn Linie 3 Haltestelle: Münchener Platz -->
 			<g>
-				<rect x="210" y="357" rx="5" ry="5" width="29" height="29" stroke-width="2" stroke="#000" fill="#e5005a"/>
+				<rect x="210" y="357" rx="5" ry="5" width="29" height="29" stroke-width="2" stroke="#000" fill="#FFCD35"/>
 				<text x="221" y="377" stroke="#FFF" fill="#FFF">3</text>
 			</g>
 			<!-- Straßenbahn Linie 3 Haltestelle: Nürnberger Platz -->
 			<g>
-				<rect x="396" y="260" rx="5" ry="5" width="29" height="29" stroke-width="2" stroke="#000" fill="#e5005a"/>
+				<rect x="396" y="260" rx="5" ry="5" width="29" height="29" stroke-width="2" stroke="#000" fill="#FFCD35"/>
 				<text x="407" y="280" stroke="#FFF" fill="#FFF">3</text>
 			</g>
 			<!-- Straßenbahn Linie 3 Haltestelle: Reichenbachstraße -->
 			<g>
-				<rect x="539" y="120" rx="5" ry="5" width="29" height="29" stroke-width="2" stroke="#000" fill="#e5005a"/>
+				<rect x="539" y="120" rx="5" ry="5" width="29" height="29" stroke-width="2" stroke="#000" fill="#FFCD35"/>
 				<text x="550" y="140" stroke="#FFF" fill="#FFF">3</text>
 			</g>
 		</g>
 
+		<!-- Noethnitzer Strasse -->
 		<g>
-			<!-- Noethnitzer Strasse -->
 			<polyline fill="none" stroke="#B2B2B2" stroke-width="15" points=" 71,538 311,597 428,632 510,654 547,654"/>
 			<!-- Bus Linie 85 Teil 2 -->
-			<polyline fill="none" stroke="#c99d66" stroke-width="15" points=" 71,538 311,597 428,632 510,654 538,654"/>
+			<polyline fill="none" stroke="#7791C4" stroke-width="15" points=" 71,538 311,597 428,632 510,654 538,654"/>
 			<!-- Bus Linie 85 Haltestelle: Helmholtzstraße -->
 			<g>
-				<rect x="290" y="581" rx="5" ry="5" width="29" height="29" stroke="#000" fill="#c99d66" stroke-width="2"/>
+				<rect x="290" y="581" rx="5" ry="5" width="29" height="29" stroke="#000" fill="#7791C4" stroke-width="2"/>
 				<text x="297" y="601" stroke="#FFF" fill="#FFF">85</text>
 			</g>
 			<!-- Bus Linie 85 Haltestelle: Regensburger Straße -->
 			<g>
-				<rect x="96" y="533" rx="5" ry="5" width="29" height="29" stroke="#000" fill="#c99d66" stroke-width="2"/>
+				<rect x="96" y="533" rx="5" ry="5" width="29" height="29" stroke="#000" fill="#7791C4" stroke-width="2"/>
 				<text x="103" y="553" stroke="#FFF" fill="#FFF">85</text>
 			</g>
 		</g>
@@ -104,9 +111,32 @@ Author: <Jonathan> <Justavino	Lüderitz>, <4102359>
 
 		<!-- Fakutaet -->
 		<g>
-			<polygon fill="none" stroke="#000000" stroke-width="1" points="242,591 279,601 273,619 279,621 283,609 299,613 290,640
+			<polygon fill="#BFD570" stroke="#000000" stroke-width="1" points="242,591 279,601 273,619 279,621 283,609 299,613 290,640
 				257,630 260,621 234,614"/>
 			<polygon fill="#FFFFFF" stroke="#000000" stroke-width="1" points="247,599 244,608 261,613 264,604"/>
 		</g>
 	</g>
+
+	<!-- Beschriftung -->
+    <g>
+        <text x="600" y="32" font-family="Verdana" fill="white" font-size="12">
+            Hauptbahnhof
+        </text>
+        <text x="220" y="360" font-family="Verdana" fill="white" font-size="12">
+            Münchner Platz
+        </text>
+        <text x="200" y="500" font-family="Verdana" fill="white" font-size="12">
+            Georg-Schumann-Straße
+        </text>
+        <text x="40" y="540" font-family="Verdana" fill="white" font-size="12">
+            Nöthnitzer Straße
+        </text>
+        <text x="237" y="600" font-family="Verdana" fill="white" font-size="12">
+            Helmholtzstraße
+        </text>
+        <text x="360" y="650" font-family="Verdana" fill="white" font-size="12">
+            Informatik Fakultät
+        </text>
+    </g>
+
 </svg>
