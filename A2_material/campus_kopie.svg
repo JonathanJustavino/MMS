@@ -31,8 +31,7 @@ Author: <Jonathan> <Justavino	Lüderitz>, <4102359>
 			M131.774,428.9 l12.023,22.674 l8.031,64 l-6.012,33.326 M515.754,217.103 l-22.854,-167.555 M99.111,403.574 l218.475,-295.730"/>
 
 			<!-- Georg-Schumann-Straße -->
-
-			<path id="foot-path" fill="none" stroke="#294875" stroke-width="7" stroke-dasharray="10,1" d="M210.580,387 l11.843,21.417 l20.655,168.548"/>
+			<path id="foot-path" fill="none" stroke="#294875" stroke-width="7" stroke-dasharray="10,10" d="M210.580,387 l11.843,21.417 l20.655,168.548"/>
 
 		<!-- Bergstrasse -->
 		<polyline fill="none" stroke="#B2B2B2" stroke-width="15" points="518,220 575,607 548,650 541,687 540,687 531,715 531,716"/>
@@ -110,7 +109,7 @@ Author: <Jonathan> <Justavino	Lüderitz>, <4102359>
 		</g>
 
 		<!-- Hauptbahnhof -->
-		<polyline fill="#FFFFFF" stroke="#000000" stroke-width="1" points="531,17 529,24 628,41 632,23"/>
+		<!-- <polyline fill="#FFFFFF" stroke="#000000" stroke-width="1" points="531,17 529,24 628,41 632,23"/> -->
 
 		<!-- Fakutaet -->
 		<g>
@@ -122,10 +121,10 @@ Author: <Jonathan> <Justavino	Lüderitz>, <4102359>
 
 	<!-- Beschriftung -->
     <g>
-        <text x="600" y="32" font-variant="small-caps" font-weight="bolder" font-family="Verdana" fill="black" font-size="12">
+        <text x="555" y="110" font-family="Verdana" fill="black" font-size="12">
             Hauptbahnhof
         </text>
-        <text x="220" y="360" font-variant="small-caps" font-weight="bold" font-family="Verdana" fill="black" font-size="12">
+        <text x="220" y="360" font-family="Verdana" fill="black" font-size="12">
             Münchner Platz
         </text>
         <text x="200" y="500" font-family="Verdana" fill="black" font-size="12">
@@ -137,93 +136,8 @@ Author: <Jonathan> <Justavino	Lüderitz>, <4102359>
         <text x="192" y="614" font-family="Verdana" fill="black" font-size="12">
             Helmholtzstraße
         </text>
-        <text x="300" y="675" font-variant="small-caps" font-weight="bold" font-family="Verdana" fill="black" font-size="12">
+        <text x="300" y="675" font-family="Verdana" fill="black" font-size="12">
             Informatik Fakultät
         </text>
     </g>
-
-		<!-- Hovering TextBox -->
-		<rect class="text-box" x="30" y="50" width="510" height="90" fill="#B2B2B2" stroke="#000" rx="5"/>
-		<text class="text-box" x="32" y="66">
-													<tspan font-size="14">Anreise mit dem Zug</tspan>
-													<tspan x="32" y="82" font-size="14">Vom Dresdner Hauptbahnhof fahren Sie mit der Straßenbahnlinie 3 (Richtung Coschütz)</tspan>
-													<tspan x="32" y="98" font-size="14"> drei Stationen bis Haltestelle "Münchner Platz",</tspan>
-													<tspan x="32" y="114" font-size="14"> laufen die "Georg-Schumann-Straße" bergauf bis zur "Nöthnitzer Straße".</tspan>
-													<tspan x="32" y="130" font-size="14">Das Fakultätsgebäude befindet sich auf der gegenüberliegenden Straßenseite.</tspan>
-		</text>
-		<rect class="text-box2" x="30" y="50" width="490" height="70" fill="#B2B2B2" stroke="#000" rx="5"/>
-		<text class="text-box2" x="32" y="66">
-													<tspan font-size="14">Alternativ können Sie eine Haltestelle weiter bis zur Haltestelle Nöthnitzer Str. fahren </tspan>
-													<tspan x="32" y="82" font-size="14"> und dort in den Bus Line 85 inRichtung Striesen steigen.</tspan>
-													<tspan x="32" y="98" font-size="14">Der Bus hält am 2. Haltepunkt (Helmholtzstraße)</tspan>
-													<tspan x="32" y="114" font-size="14">direkt vor dem Gebäude der Fakultät Informatik. […]</tspan>
-		</text>
-
-		<style>
-
-			.text-box{
-				visibility: hidden;
-			}
-
-			.text-box2{
-				visibility: hidden;
-			}
-
-			#bus:hover{
-				stroke-width: 20;
-			}
-
-			#tram:hover{
-				stroke-width: 20;
-			}
-
-			#foot-path:hover{
-				stroke-width: 14;
-			}
-
-		</style>
-
-
-		<script type="text/javascript">
-			<![CDATA[
-
-				var bus = document.getElementById('bus');
-				var tram = document.getElementById('tram');
-				var foot = document.getElementById('foot-path');
-				var textBox = document.getElementsByClassName('text-box');
-				var textBox2 = document.getElementsByClassName('text-box2');
-
-				bus.addEventListener('mouseover', mouseOverBus);
-				tram.addEventListener('mouseover', mouseOver);
-				foot.addEventListener('mouseover', mouseOver);
-
-				bus.addEventListener('mouseout', mouseOutBus);
-				tram.addEventListener('mouseout', mouseOut);
-				foot.addEventListener('mouseout', mouseOut);
-
-				function mouseOver() {
-					for(var i = 0; i < textBox.length; i++){
-						textBox[i].style.visibility = 'visible';
-					}
-				}
-				function mouseOut() {
-					for(var i = 0; i < textBox.length; i++){
-						textBox[i].style.visibility = 'hidden';
-					}
-				}
-
-				function mouseOverBus() {
-					for(var i = 0; i < textBox2.length; i++){
-						textBox2[i].style.visibility = 'visible';
-					}
-				}
-				function mouseOutBus() {
-					for(var i = 0; i < textBox2.length; i++){
-						textBox2[i].style.visibility = 'hidden';
-					}
-				}
-
-    	]]>
-		</script>
-
 </svg>
